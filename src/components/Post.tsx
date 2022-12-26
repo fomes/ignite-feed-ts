@@ -2,6 +2,7 @@ import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import React, { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 import Comment from "./Comment";
+import Modal from "./Modal";
 import styles from "./Post.module.css";
 
 interface AuthorProps {
@@ -23,7 +24,9 @@ interface PostProps {
 
 export default function Post({ author, content, publishedAt }: PostProps) {
   const [comments, setComments] = useState(["Muito bom"]);
+  const [commentToDelete, setCommentToDelete] = useState("");
   const [commentText, setCommentText] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const formatDate = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -47,16 +50,36 @@ export default function Post({ author, content, publishedAt }: PostProps) {
   };
 
   const handleDeleteComment = (comment: string) => {
-    const updateComments = comments.filter((item: any) => item !== comment);
+    setShowModal(true);
+    setCommentToDelete(comment);
+  };
+
+  const handleConfirmDelete = () => {
+    const updateComments = comments.filter(
+      (item: string) => item !== commentToDelete
+    );
     setComments(updateComments);
+    setShowModal(false);
   };
 
   const handleInvalidComment = (event: InvalidEvent<HTMLTextAreaElement>) => {
     event.target.setCustomValidity("Esse campo é obrigatório!");
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
+      <Modal
+        showModal={showModal}
+        title="Excluir comentário"
+        text="Você tem certeza que gostaria de excluir esse comentário?"
+        btnConfirm="Sim, excluir"
+        handleCloseModal={handleCloseModal}
+        handleConfirmDelete={handleConfirmDelete}
+      />
       <article className={styles.post}>
         <header>
           <div className={styles.author}>
@@ -109,7 +132,7 @@ export default function Post({ author, content, publishedAt }: PostProps) {
         </form>
 
         <div className={styles.commentList}>
-          {comments.map((item: any) => {
+          {comments.map((item: string) => {
             return (
               <Comment
                 key={item}
