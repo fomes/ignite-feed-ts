@@ -3,49 +3,12 @@ import Post from "./components/Post";
 import styles from "./App.module.css";
 import "./global.css";
 import Sidebar from "./components/Sidebar";
-
-const posts = [
-  {
-    id: 1,
-    author: {
-      avatarUrl: "https://github.com/fomes.png",
-      name: "Felipe Gomes",
-      role: "Full Stack Developer",
-    },
-    content: [
-      { type: "paragraph", content: "Fala Galera" },
-      {
-        type: "paragraph",
-        content: "Acabei de subir mais um projeto no meu portifólio.",
-      },
-      { type: "link", content: "felipe.com/projects" },
-    ],
-    publishedAt: new Date("2022-12-22 16:30:00"),
-  },
-  {
-    id: 2,
-    author: {
-      avatarUrl: "https://github.com/fom.png",
-      name: "Fom Dev",
-      role: "Web Developer",
-    },
-    content: [
-      { type: "paragraph", content: "Fala Galera" },
-      {
-        type: "paragraph",
-        content: "Acabei de subir mais um projeto no meu portifólio.",
-      },
-      { type: "link", content: "fomes.com/projects" },
-    ],
-    publishedAt: new Date("2022-12-23 16:30:00"),
-  },
-];
+import { posts } from "./data/posts";
 
 function App() {
   return (
     <>
       <Header />
-
       <div className={styles.wrapper}>
         <Sidebar />
 

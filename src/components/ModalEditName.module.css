@@ -1,0 +1,59 @@
+.modalContainer {
+  position: absolute;
+  width: 432px;
+  height: 238px;
+  background: var(--gray-900);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  top: 50%;
+  left: 50%;
+  margin-left: -216px;
+  margin-top: -119px;
+}
+
+.modalContainer input {
+  width: 80%;
+  color: var(--gray-100);
+  background: var(--gray-800);
+  border: 0;
+  resize: none;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+}
+
+.modalContainer button {
+  width: 138px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--gray-700);
+  color: var(--gray-100);
+  font-weight: bold;
+}
+
+.modalContainer button:first-child {
+  background: var(--gray-900);
+}
+
+.modalContainer button:last-child {
+  color: var(--red-500);
+}
+
+.modalContainer button:hover {
+  background: var(--gray-600);
+}
+
+.btnContainer {
+  display: flex;
+  gap: 1rem;
+}

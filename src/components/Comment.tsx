@@ -43,10 +43,10 @@ export default function Comment({
         </div>
 
         <footer>
-          <span onClick={() => setLikeCount(likeCount + 1)}>
+          <button onClick={() => setLikeCount(likeCount + 1)}>
             <ThumbsUp />
             Aplaudir <span>{likeCount}</span>
-          </span>
+          </button>
         </footer>
       </div>
     </div>

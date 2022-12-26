@@ -60,7 +60,7 @@
   margin-top: 1rem;
 }
 
-.commentBox footer > span {
+.commentBox footer > button {
   background: transparent;
   border: 0;
   outline: 0;
@@ -71,19 +71,19 @@
   align-items: center;
 }
 
-.commentBox footer > span:hover {
+.commentBox footer > button:hover {
   color: var(--green-300);
 }
 
-.commentBox footer > span:focus {
+.commentBox footer > button:focus {
   outline: 0;
 }
 
-.commentBox footer span svg {
+.commentBox footer button svg {
   margin-right: 0.5rem;
 }
 
-.commentBox footer span span::before {
+.commentBox footer button span::before {
   content: "\2022";
   padding: 0 0.25rem;
 }

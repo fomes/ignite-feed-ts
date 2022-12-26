@@ -2,7 +2,7 @@ import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import React, { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 import Comment from "./Comment";
-import Modal from "./Modal";
+import ModalConfirmDelete from "./ModalConfirmDelete";
 import styles from "./Post.module.css";
 
 interface AuthorProps {
@@ -72,7 +72,7 @@ export default function Post({ author, content, publishedAt }: PostProps) {
 
   return (
     <>
-      <Modal
+      <ModalConfirmDelete
         showModal={showModal}
         title="Excluir comentário"
         text="Você tem certeza que gostaria de excluir esse comentário?"
@@ -104,7 +104,11 @@ export default function Post({ author, content, publishedAt }: PostProps) {
 
             if (item.type === "link") {
               return (
-                <a href="#" key={item.content}>
+                <a
+                  href="https://github.com/fomes?tab=repositories"
+                  key={item.content}
+                  target="_blank"
+                >
                   {item.content}
                 </a>
               );

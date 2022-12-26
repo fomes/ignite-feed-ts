@@ -1,33 +1,38 @@
 import React from "react";
-import styles from "./Modal.module.css";
+import styles from "./ModalEditName.module.css";
 
 interface ModalProps {
   title: string;
-  text: string;
   btnConfirm: string;
   showModal: boolean;
+  onChange: (value: any) => void;
   handleCloseModal: () => void;
-  handleConfirmDelete: () => void;
+  handleConfirmEdit: () => void;
 }
 
-export default function Modal({
+export default function ModalEditName({
   title,
-  text,
   btnConfirm,
   showModal,
+  onChange,
   handleCloseModal,
-  handleConfirmDelete,
+  handleConfirmEdit,
 }: ModalProps) {
   return (
     <>
       {showModal && (
         <div className={styles.modalContainer}>
           <h1>{title}</h1>
-          <p>{text}</p>
+
+          <input
+            type="text"
+            placeholder="Digite novo nome"
+            onChange={onChange}
+          />
 
           <div className={styles.btnContainer}>
             <button onClick={handleCloseModal}>Cancelar</button>
-            <button onClick={handleConfirmDelete}>{btnConfirm}</button>
+            <button onClick={handleConfirmEdit}>{btnConfirm}</button>
           </div>
         </div>
       )}
